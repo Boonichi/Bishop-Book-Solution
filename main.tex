@@ -1,0 +1,400 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\counterwithin*{equation}{section}
+\counterwithin*{equation}{subsection}
+\setlength{\topmargin}{-1in}
+\setlength{\textwidth}{7in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\textheight}{9.5in}
+\begin{document}
+    \section{Introduction}
+    \subsection*{Problem 1.1}
+    Given that:
+    \begin{align}
+        \sum^M_{j = 0}A_{ij}w_j = T_i & \text{1}
+    \end{align}
+    Where:
+    \begin{align*}
+        A_{ij} = \sum^N_{n = 1}(x_n)^{i+j} &\text{2}\\
+        T_i = \sum^N_{n = 1}(x_n)^it_n & \text{3}\\
+        y(x,w) = w_0 + w_1x + w_2x^2 + ... + w_Mx^M = \sum^M_{j = 0}w_jx^j & \text{4}\\
+        E(w) = \frac{1}{2}\sum^N_{n = 1}\{y(x_n,w) - t_n\}^2 & \text{5}
+    \end{align*}
+    Show that the coefficients \textbf{w} = $\{w_i\}$ that minimizes (1) error equation. To solve this problem,\
+    we will derivative the sum-of-squares error function (5).
+    \begin{align*}
+        \frac{\partial E}{\partial w_i} & = \frac{1}{2}\sum^N_{i = 0}2\{y(x_n,w)-t_n\}x_i = 0\\
+        \iff & \sum^N_{i = 0}\{y(x_n,w)x^i - t_nx^i\} = 0 \\
+        \iff & \sum^N_{i = 0}\{y(x_n,w)x^i\} = \sum^N_{i = 0}t_nx^i \\
+        \iff & \sum^N_{i = 0}\sum^M_{j = 0}w_jx_i^jx^i = \sum^N_{i = 0}t_nx_i \\
+        \iff & \sum^M_{j = 0}\sum^N_{i = 0}w_jx_i^{i+j} = \sum^N_{i = 0}x_n^it_n
+    \end{align*}
+    If we denote the above equation by (2) and (3), we get the answer. The problem is solved.
+    
+    \subsection*{Problem 1.2}
+    Given the regularized sum-of-squares equation:
+    \begin{align}
+        \tilde{E}(w) = \frac{1}{2}\sum^N_{n = 1}\{y(x_n,w)-t_n\}^2 + \frac{\lambda}{2}\|w\|^2
+    \end{align}
+    Write down the set of coupled linear equations, analogous to equation from previous excercise, satisfied by the coefficients $\{w_i\}$.
+    To solve this problem, we derivative the given equation like ex 1.1:
+    \begin{align*}
+        \frac{\partial \tilde{E}}{\partial w_i} & = \sum^{N}_{n = 1}\{y(x_n,w) - t_n\}x_n^i + \lambda\|w\| = 0 \\
+        & \sum^N_{n = 1}\sum^{M}_{n = 1}(w_jx_n^jx_n^i - t_nx_n^i) + \lambda\|w\| = 0 \\
+        & \sum^M_{j = 1}(A_{ij} - T_i) + \lambda\|w\| = 0
+    \end{align*}
+    *Note: Incorrect, the theta variable called kronecker delta and the derivative of equation is incorrect
+
+    \subsection*{Problem 1.3}
+    Based on Bayes's Theorem:
+    \begin{align*}
+        P(X) = \sum_{Y}P(X|Y)P(Y)
+    \end{align*}
+    The probability of selecting an apple P(a) from all boxes:
+    \begin{align*}
+        P(a) & = P(a|r) * P(r) + P(a|b) * P(b) + P(a|g) * P(g) = 0.3 * 0.2 + 0.5 * 0.2 + 0.3 * 0.6 \\
+             & = 0.34
+    \end{align*}
+    The probabilty that orange came from green box P(g$|$o) and based on Bayes's Theorem, we have:
+    \begin{align*}
+        P(g|o) & = \frac{P(o|g) * P(g)}{P(o)}
+    \end{align*}
+    We will calculate P(o) like P(a):
+    \begin{align*}
+        P(o) & = P(o|r) * P(r) + P(o|b) * P(b) + P(o|g) * P(g) = 0.4 * 0.2 + 0.5 * 0.2 + 0.3 * 0.6 \\
+             & = 0.36 \\
+        P(g|o) & = \frac{0.3 * 0.6}{0.36} = 0.5
+    \end{align*}
+
+    \subsection*{Problem 1.4}
+    Equation (1.27) from the change of varible theorem:
+    \begin{align*}
+        p_y(y) & = p_x(x)|\frac{dx}{dy}| \\
+        & = p_x(g(y))\|g'(y)\|
+    \end{align*}
+    We will calculate the derivative of equation (1.27) with respect to y, we got:
+    \begin{align}
+        \frac{p_y(y)}{dy} = \frac{dp_x(x)|g'(y)|}{dy} = \frac{dp_x(x)}{dy}|g'(y)| + p_x(x)\frac{g'(y)}{dy}
+    \end{align}
+    Applying Chain Rule into first term in equation (1):
+    \begin{align}
+        \frac{dp_x(x)}{dy}|g'(y)| = \frac{p_x(g(y))}{dg(y)}\frac{dg(y)}{dy}|g'(y)|
+    \end{align}
+    if $\hat{x}$ is maximum of the density over x, we obtain:
+    \begin{align*}
+        \frac{dp_x(x)}{dx}|\hat{x} = 0
+    \end{align*}
+    Therefore, the equation (2) will equal 0, leading to the first term of equation (1) equal 0. In case of linear traIn nsformation, \
+    the second term of equation (1) will be vanish (ex: y = ax + b) so equation(1) equal 0.
+    In conclusion, in case of linear transformation, the location of the maximum transforms in the same way as the variable itself.
+
+    \subsection*{Problem 1.5}
+    \begin{align*}
+        E[E[f(x)]] = E[f(x)] && \text{cause E[f(x)] is constant} \\
+        var[f(x)] & = E[(f(x) - E[f(x)])^2] \\
+        & = E[f(x)^2 - 2f(x)E[f(x)] + E[f(x)]^2] \\
+        & = E[f(x)^2] - 2E[f(x)]^2 + E[f(x)]^2 \\
+        & = E[f(x)^2] - E[f(x)]^2
+    \end{align*}
+    
+    \subsection*{Problem 1.6}
+    If x and y are independent, we obtain:
+    \begin{align*}
+        p_{xy}(x,y) = p_x(x)p_y(y) \\
+        \int_{xy}p_{xy}(x,y) = \int_{x}\int_{y}xyp_x(x)p_y(y) \\
+        = \int_{x}xp_x(x)\int_{y}yp_y(y) \\
+        = E[x]E[y]
+    \end{align*}
+    The result is leading to make the covariance of x and y equal 0. The problem is solved.
+
+    \subsection*{Problem 1.7}
+    \begin{align*}
+        I^2  = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\exp(\frac{-1}{2\sigma^2}x^2 - \frac{1}{2\sigma^2}y^2)dx 
+    \end{align*}
+    Transform Cartesian coordination (x,y) $\rightarrow$ polar coordination (r,$\theta$):
+    \begin{align*}
+        x = rcos(\theta), y = rsin(\theta) \\
+        0 \leq r \leq +\infty, -\infty \leq \theta \leq 2\pi \\
+        I^2 = \int_{-\infty}^{2\pi}\int_{0}^{+\infty}\exp(\frac{-1}{2\sigma^2}(rcos\theta)^2 - \frac{1}{2\sigma^2}(rsin\theta))rdrd\theta \\
+        I^2 = \int_{-\infty}^{2\pi}\int_{0}^{+\infty}\exp(\frac{1}{2\theta^2}r^2)rdrd\theta \\
+    \end{align*}
+    Subtituting u = $r^2$ and calculate integral over u firstly:
+    \begin{align*}
+        \int_{0}^{+\infty}\frac{1}{2}\exp(\frac{-1}{2\sigma^2}u)du \\
+        = -\sigma^2\exp(\frac{-1}{2\sigma^2}u)_{|_{0}^{+\infty}} \\
+        = -\sigma^2(0 - 1) = \sigma^2
+    \end{align*}
+    Integral over $\theta$:
+    \begin{align*}
+        I^2 = \int_{-\infty}^{2\pi}\sigma^2d\theta = \sigma^2\theta_{|_{-\infty}^{2\pi}} \\
+        I = \sqrt{2\pi\theta^2}
+    \end{align*}
+    A probability distribution is called "Normalized" if the sum of all possible result equal one.
+    \begin{align*}
+        \int_{-\infty}^{+\infty}\mathcal{N}(x|\mu,\sigma) \\
+        = \int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\sigma^2}}\exp(\frac{-1}{2\sigma^2}(x - \mu)^2)dx \\
+        = \frac{\sqrt{2\pi\sigma^2}}{\sqrt{2\pi\sigma^2}} = 1 && \text{(Solved)}
+    \end{align*}
+    \subsection*{Problem 1.8}
+    \begin{align*}
+        E[x] = \int_{-\infty}^{+\infty}\mathcal{N}(x|\mu,\sigma^2)xdx \\
+        = \int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\sigma^2}}\exp(\frac{-1}{2\sigma^2}(x - \mu)^2)xdx \\
+        \intertext{Subtituting y = x - $\mu$:}
+        E[x] = \int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\sigma^2}}\exp(\frac{-1}{2\sigma^2}y^2)(y + \mu)dx \\
+        = \frac{1}{\sqrt{2\pi\sigma^2}}(\int_{-\infty}^{+\infty}\exp(\frac{-1}{2\sigma^2}y^2)ydx + \int_{-\infty}^{+\infty}\exp(\frac{-1}{2\sigma^2}y^2)\mu dx) \\
+        \intertext{Get the result from problem (1.7), we obtain:}
+        E[x] = 0 + \mu = \mu
+        \intertext{So the univariate Gauss Distribution given from (1.46) satisfies (1.49). Then we differentiate the equation (1.127) by using product rule.}
+        \mathcal{N}(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp(\frac{(x - \mu)^2}{2\sigma^2}) \\
+        \frac{d\mathcal{N}(x|\mu,\sigma^2)}{d\sigma^2} = (\frac{1}{\sqrt{2\pi\sigma^2}})'\exp(\frac{(x - \mu^2)}{2\sigma^2}) + \frac{1}{\sqrt{2\pi\sigma^2}}\exp(\frac{(x - \mu)^2}{2\sigma^2})' \\
+        \intertext{The derivative of First term:}
+        \frac{-1}{2\sqrt{2\pi}\sigma^3}\exp(\frac{(x - \mu^2)}{2\sigma^2}) \\
+        \intertext{The derivative of Second term:}
+        \frac{(x - \mu)^2}{2\sqrt{2\pi}\sigma^5}\exp(\frac{(x - \mu^2)}{2\sigma^2}) \\
+        \intertext{Simplify the equation, we will obtain:}
+        \int_{-\infty}^{+\infty}(\frac{-1}{2\sigma^2} + \frac{(x - \mu)^2}{2\sigma^4})\mathcal{N}(x|\mu,\sigma^2) = 0 \\
+        \int_{-\infty}^{+\infty}(x - \mu)^2\mathcal{N}(x|\mu,\sigma^2) = \sigma^2 \\
+        \intertext{Based on definition of variance, we proved:}
+        var[x] = \sigma^2
+        \intertext{Also we have:}
+        E[x^2] = var[x] + E[x]^2 = \sigma^2 + \mu^2
+    \end{align*}
+    \subsection*{Problem 1.9}
+    \begin{align*}
+        \intertext{The formula (1.52) is the general form of (1.46) so we will only prove this formula:}
+        \frac{\partial(\frac{1}{2\pi^{\frac{D}{2}}}\frac{1}{|\Sigma|^{\frac{1}{2}}}\exp{\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x - \mu)})}{\partial x} = 0 \\
+        \frac{1}{2}(\Sigma^{-1} + (\Sigma^{-1})^{T})(x - \mu)\mathcal{N}(x|\mu,\Sigma) = 0 \\
+        \Sigma^{-1}(x - \mu)\mathcal{N}(x|\mu,\Sigma) = 0 \\
+        x = \mu \\
+        \intertext{Using these formulas to get above result:}
+        x^TA = A^Tx \\
+        \frac{\partial x^TAx}{\partial x} = (A + A^T)x \\
+        \intertext{The Second Derivative of formula (1.52):}
+        \Sigma^{-1}\mathcal{N}{(x|\mu,\Sigma)} + \Sigma^{-1}(x - \mu)\frac{1}{2}(\Sigma^{-1} + (\Sigma^{-1})^{T})(x - \mu)\mathcal{N}(x|\mu,\Sigma) \\
+        = \Sigma^{-1}\mathcal{N}{(x|\mu,\Sigma)}(1 + \Sigma^{-1}(x - \mu)^2) \\
+        \intertext{As we can see, $\Sigma$ is positive semi-definite, the distribution is always positive so the the above equation is always positive. Applying it to Hessian matrix,
+        all the eigenvalues of matrix are positive. It mean the point $x = \mu$ is the maximum point.}
+    \end{align*}
+    \subsection*{Problem 1.10}
+    Proof of First Term:
+    \begin{align*}
+        E[x+z] = E[x] + E[z] \\
+        \int p(x)dx = 1 \\
+        p(x,z) = p(x)p(z) && \text{(cause x,z are independent)} \\
+        E[x + z] & = \int\int(x + z)p(x,z)dxdz \\
+        & = \int\int xp(x)p(z)dxdz + \int\int zp(x)p(z)dxdz \\
+        & = E[x] + E[z]
+    \end{align*}
+    Proof of Second Term:
+    \begin{align*}
+        var[x + z] & = E[(x + z)^2] - E[x + z]^2 \\
+        & = \int\int(x + z)^2p(x,z) - (\int\int(x+z)p(x,z))^2 \\
+        & = E[x^2] + E[z^2] + \int\int2xzp(x)p(z)dxdz - (E[x]^2 + E[z]^2 + 2\int\int2xzp(x)p(z)dxdz) \\
+        & = E[x^2] - E[x]^2 + E[z^2] - E[z]^2 \\
+        & = var[x] + var[z]
+    \end{align*}
+    \subsection*{Problem 1.11}
+    \begin{align*}
+        \ln{\prod_{n = 1}^{N}f(x)} = \sum_{n = 1}^{N}ln(f(x))\\
+        \intertext{From above equation, we obtain:}
+        ln(p(x|\mu,\sigma^2)) = \frac{1}{2\sigma^2}\sum_{n = 1}^{N}(x_n - \mu)^2 - \frac{N}{2}ln(2\pi) - \frac{N}{2}ln(\sigma^2) \\
+        \intertext{Setting the derivative of the log likelihood function with respect to $\mu$:}
+        \frac{dln(p(x|\mu,\sigma^2))}{d\mu} = \frac{1}{\sigma^2}\sum_{n = 1}^{N}(x_n - \mu) = 0 \\
+        \sum_{n = 1}^{N}x_n - N\mu = 0 \\
+        \mu_{ML} = \frac{1}{N}\sum_{n = 1}^{N}x_n
+        \intertext{Setting the derivative of the log likelihood function with respect to $\sigma^2$:}
+        \frac{dp(x|\mu,\sigma^2)}{d\sigma^2} = \frac{1}{2\sigma^4}\sum_{n = 1}{N}(x_n - \mu)^2 - \frac{N}{2\sigma^2} = 0 \\
+        \sigma^2_{ML} = \frac{1}{N}\sum_{n = 1}^{N}(x_n - \mu_{ML})^2
+    \end{align*}
+    \subsection*{Problem 1.12}
+    \begin{align*}
+        \intertext{If n $\not =$ m then $x_n$ and $x_m$ are independent.Hence E[$x_nx_m$] = E[$x_n$][$x_m$] = $\mu^2 + \sigma^2$.
+        In case of n = m, E[$x_nx_m$] = E[x] = $\mu^2$. Combine those results, we obtain the equation (1.130).}
+        \intertext{Easy to prove the equation (1.49):}
+        E[\mu_{ML}] = E[\frac{1}{N}\sum_{n = 1}^{N}x_n] = \frac{1}{N}\sum_{n = 1}^{N}E[x] = \frac{1}{N}N\mu = \mu \\
+        \intertext{With equation (1.50):}
+        E[\sigma_{ML}^2] = E[\frac{1}{N}\sum_{n = 1}^{N}(x - \mu_{ML})^2] = \frac{1}{N}\sum_{n = 1}^{N}E[(x^2 - 2x\mu_{ML} + \mu_{ML}^2] \\
+        = \frac{1}{N}\sum_{n = 1}^{N}(E[x^2] - 2E[x\mu_{ML}] + E[\mu_{ML}^2]) \\
+        = \mu^2 + \sigma^2 - \frac{2}{N^2}E[\sum_{n = 1}^{N}\sum_{m = 1}^{M}x_{nm}^2] + \frac{1}{N^2}E[(\sum_{p = 1}^{P}x_p)^2] \\
+        \intertext{Because x = m = p, hence:}
+        E[\mu_{ML}] = \mu^2 + \sigma^2 - \frac{1}{N^2}E[(\sum_{n = 1}^{N}x_n)^2] \\
+        \intertext{Based on equation (1.130), we will obtain}:
+        E[\mu_{ML}] = \mu^2 + \sigma^2 - \mu^2 - \frac{1}{N}\sigma^2 \\
+        = \frac{N - 1}{N}\sigma^2
+    \end{align*}
+    \subsection*{Problem 1.13}
+    \begin{align*}
+        \intertext{We will solve similarly like problem (1.12):}
+        E[\sigma_{ML}^2] = E[\frac{1}{N}\sum_{n = 1}^{N}(x_n - \mu)^2] \\
+        = \frac{1}{N}\sum_{n = 1}^{N}(E[x^2] - 2E[x\mu] + E[\mu^2]) \\
+        = \frac{1}{N}\sum_{n = 1}^{N}(\mu^2 + \sigma^2 - 2\mu^2 + \mu^2) \\
+        = \sigma^2
+        \intertext{In case of Maximum Likelihood Mean:}
+        E[\mu_{ML}^2] = E[(\frac{1}{N}\sum_{n = 1}^{N}x_n)^2] \\
+        = \frac{1}{N^2}(N(N\mu^2 + \sigma^2)) = \mu^2 + \frac{\sigma^2}{N}
+    \end{align*}
+    \subsection*{Problem 1.17}
+    \begin{align*}
+        \intertext{The derivative of $\Gamma(x + 1)$:}
+        \Gamma(x + 1) = \int_{0}^{\infty}u^{x}e^{-u}du \\
+        = -u^{x}e^{-u}|_{0}^{\infty} + x\Gamma(x) \\
+        \intertext{Through L'hopital rule, we obtain:}
+        \lim_{u -> \infty}\frac{u^x}{e^{u}} = \lim_{u -> \infty}\frac{x!}{e^{\infty}} = 0 \\
+        \intertext{So we have proved $\gamma(x + 1) = x\gamma(x)$.}
+        \Gamma(1) = \int_{0}^{\infty}e^{-u}du = e^{-u}|_{0}^{\infty} = (1 - 0) = 1 \\
+        \intertext{Based on two above proved equation, we will obtain:}
+        \Gamma(x + 1) = x\Gamma(x) = x!\Gamma(1) = x!
+    \end{align*}
+    \section{Probability Distributions}
+    \subsection*{Problem 2.1}
+    \begin{align*}
+        \intertext{Bernoulli Distribution:}
+        Bern(x|\mu) = \mu^{x}(1 - \mu)^{1 - x}
+        \sum_{x = 0,1}Bern(x|\mu) = \sum_{x = 0,1}\mu^{x}(1 - \mu)^{1 - x} = (1 - \mu) + \mu = 1 \\
+        E[x] = \sum_{x = 0,1}Bern(x|\mu)x = \sum{x = 0,1}\mu^{x}(1 - \mu)^{1 - x}x = 0 + \mu = \mu \\
+        var[x] = \sum_{x = 0,1}(E[x^2] - E[x]^2) = \sum_{x = 0,1}(\sum_{x = 0,1}\mu^{x}(1 - \mu)^(1 - x)x^2) + \mu^2 \\
+        = \mu + \mu^2 = \mu(1 + \mu)
+        \intertext{The entropy H(x) of Bernoulli Distribution:}
+        H(x) = -\sum_{x = 0,1}Bern(x|mu)\ln{Bern(x|mu)} = -\sum_{x = 0,1}\mu^{x}(1 - \mu)^{1 - x}ln(\mu^{x}(1 - \mu)^{1 - x}) \\
+        = - (1 - \mu)\ln{1 - \mu} - \mu\ln{\mu}
+    \end{align*}
+    \subsection*{Problem 2.2}
+    \begin{align*}
+        \intertext{This problem is the same as problem (2.1), so we will solve similarly:}
+        \sum_{x = -1,1}p(x|\mu) = \sum_{x = -1,1}(\frac{1 - \mu}{2})^{(1 - x)/2}(\frac{1 + \mu}{2})^{(1 + x)/2} \\
+        = \frac{1 - \mu}{2} + \frac{1 + \mu}{2} = 1
+        \intertext{So the distribution (2.261) is normalized}
+        E[x] = \sum_{x = -1,1}(\frac{1 - \mu}{2})^{(1 - x)/2}(\frac{1 + \mu}{2})^{(1 + x)/2}x \\
+        = -\frac{1 - \mu}{2} + \frac{1 + \mu}{2} = \frac{2\mu}{2} = \mu
+        var[x] = E[x^2] - E[x]^2 = \sum_{x = -1,1}(\frac{1 - \mu}{2})^{(1 - x)/2}(\frac{1 + \mu}{2})^{(1 + x)/2}x^2 - \mu^2 \\
+        = \frac{1 - \mu}{2} + \frac{1 + \mu}{2} - \mu^2 = \mu - \mu^2 = \mu(1 - \mu) \\
+        H[x] = -\sum_{x = -1,1}p(x|\mu)ln(p(x|\mu)) = \sum_{x = -1,1}(\frac{1 - \mu}{2})^{(1 - x)/2}(\frac{1 + \mu}{2})^{(1 + x)/2}\ln{(\frac{1 - \mu}{2})^{(1 - x)/2}(\frac{1 + \mu}{2})^{(1 + x)/2}} \\
+        = - (\frac{1 - \mu}{2})\ln{\frac{1 - \mu}{2}} - (\frac{1 + \mu}{2})\ln{\frac{1 + \mu}{2}}
+    \end{align*}
+    \subsection*{Problem 2.3}
+    \begin{align*}
+        \intertext{Transforming the equation (2.262) based on the definition (2.10) of the number of combinations, we will obtain:}
+        \frac{N!}{(N - m)!m!} + \frac{N!}{(N - m + 1)!(m - 1)!} = \frac{(N + 1)!}{(N - m + 1)!m!} \\
+        \intertext{So we will solve the problem with above equation:}
+        \frac{N!}{(N - m)!m!} + \frac{N!}{(N - m + 1)!(m - 1)!} = \frac{N!(N - m + 1)}{(N - m + 1)!m!} + \frac{N!m}{(N - m + 1)!m!} \\
+        = \frac{N!(N + 1)}{(N - m + 1)!m!} = \frac{(N + 1)!}{(N - m + 1)!m!} && (Solved)
+        \intertext{We will prove equation (2.263) by induction and easy to see that the equation is true if N = 1. Assuming the equation (2.263) holds true on N then we will prove that equation also holds:}
+        (1 + x)^{N + 1} = (1 + x)\sum_{m = 0}^{N}C_{N}^{m}x^m = x\sum_{m = 0}^{N}C^{m}_{N}x^m + \sum_{m = 0}^{N}C^{m}_{N}x^m \\
+        = \sum_{m = 0}^{N}C^{m}_{N}x^{m + 1} + \sum_{m = 0}^{N}C^{m}_{N}x^m = \sum_{m = 1}^{N + 1}C^{m - 1}_{N}x^{m + 1} + \sum_{m = 0}^{N}C^{m}_{N}x^m \\
+        = \sum_{m = 1}^{N}(C^{m}_{N} + C^{m - 1}_{N})x^m + x^{N + 1} + x^0 \\
+        = \sum_{m = 1}^{N}C^{m}_{N + 1}x^m + x^{N + 1} + x^0 \\
+        = \sum_{m = 0}^{N + 1}C^{m}_{N + 1}x^m && (Solved)
+        \intertext{Then we will show that the equation (2.264) holds true by induction like above. Subtituting $y = (1 - x)$, we obtain:}
+        (x + y)^{N + 1} = (x + y)\sum_{m = 0}^{N}C_N^mx^my^{N - m} \\
+        = x\sum_{m = 0}^{N}C^m_Nx^my^{N - m} + y\sum_{m = 0}^{N}C^m_Nx^my^{N - m} \\
+        = \sum_{m = 0}^{N}C^m_Nx^{m + 1}y^{N - m} + y\sum_{m = 0}^{N}C^m_Nx^my^{N - m + 1} \\
+        = \sum_{m = 1}^{N + 1}C^{m - 1}_{N + 1}x^my^{N - m} + \sum_{m = 0}^{N}C^m_Nx^my^{N - m + 1} \\
+        = \sum_{m = 1}^{N}(C^{m - 1}_{N + 1} + C^m_N)x^my^{N - m} + x^{N + 1} + y^{N + 1} \\
+        = \sum_{m = 1}^{N}C^m_{N + 1}x^my^{N - m} + x^{N + 1} + y^{N + 1} \\
+        = \sum_{m = 0}^{N + 1}C^m_{N + 1}x^{m + 1}y^{N - m + 1} \\
+        \intertext{We have solved the equation by inducntion then subtitute again $y = (1 - x)$, we will prove the binomial distribution is normalized.}
+        \sum_{m = 0}^{N}C^m_Nx^my^{N - m} = (x + 1 - x)^N = 1^N = 1
+    \end{align*}
+    \subsection*{Problem 2.5}
+    \begin{align*}
+        \intertext{let t = y + x and x = $t\mu$, we obtain:}
+        x = t\mu && y = t(1 - \mu) && t = x + y && \mu = \frac{x}{x + y} \\
+        \intertext{Using Jacobian Determinant for multiple integral:}
+        \frac{\partial (x,y)}{\partial (\mu,t)} = \begin{bmatrix}
+            \frac{\partial x}{\partial \mu} & \frac{\partial x}{\partial t} \\
+            \frac{\partial y}{\partial \mu} & \frac{\partial y}{\partial t}
+        \end{bmatrix}
+        = \begin{bmatrix}
+            t & \mu \\
+            -t & 1 - \mu
+        \end{bmatrix} = t \\
+        \Gamma(a)\Gamma(b) = \int_{0}^{\infty}\exp{(-x)}x^{a - 1}dx\int_{0}^{\infty}\exp{(-y)}y^{b - 1}dy \\
+        = \int_{0}^{\infty}\int_{0}^{\infty}\exp{(-x - y)}x^{a - 1}y^{b - 1}dxdy \\
+        = \int_{0}^{\infty}\int_{0}^{1}\exp{(-t)}(t\mu)^{a - 1}(t(1 - \mu))^{b- 1}tdtd\mu \\
+        = \int_{0}^{\infty}\exp{(-t)}t^{a + b - 1}dt\int_{0}^{1}\mu^{a - 1}(1 - \mu)^{b - 1}d\mu \\
+        = \Gamma(a + b)\int_{0}^{1}\mu^{a - 1}(1 - \mu)^{b - 1}d\mu \\
+        \rightarrow{\int_{0}^{1}\mu^{a - 1}(1 - \mu)^{b - 1}d\mu = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)}}
+    \end{align*}
+    \subsection*{Problem 2.6}
+    \begin{align*}
+        E[\mu] = \int_{0}^{1}\mu^{a - 1}(1 - \mu)^{b - 1}\frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)}\mu d\mu \\
+        = \int_{0}^{1}\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\mu^{a}(1 - \mu)^{b - 1}d\mu \\
+        \intertext{We have equation $\Gamma(x + 1) = x\Gamma(x)$ that have proved in problem (1.17). Hence we obtain:}
+        = \frac{\Gamma(a + b + 1)a}{\Gamma(a)\Gamma(b)(a + b)}\int_{0}^{1}\mu^{a}(1 - \mu)^{b - 1}d\mu \\
+        = \frac{a}{a + b}\frac{\Gamma(a + b + 1)}{\Gamma(a)\Gamma(b)}\frac{\Gamma(a + 1)\Gamma(b)}{\Gamma(a + b + 1)} \\
+        = \frac{a}{a + b} \\
+        \intertext{In case of variance of beta distribution, we will solve it similarly like $E[\mu]$:}
+        var[\mu] = E[x^2] - E[x]^2 = \int_{0}^{1}\frac{\Gamma(a + b)}{\Gamma(a)\Gamma(b)}\mu^{a + 1}(1 - \mu)^{b - 1}d\mu - (\frac{a}{a + b})^2 \\
+        = \frac{(a + 1)a}{(a + b)(a + b + 1)}\frac{\Gamma(a + b + 2)}{\Gamma(a + 2)(\Gamma(b))}\int_{0}^{1}\mu^{a + 1}{1 - \mu}^{b - 1} -  (\frac{a}{a + b})^2 \\
+        = \frac{(a + 1)a}{(a + b)(a + b + 1)} - (\frac{a}{a + b}^2) = \frac{ab}{(a + b)^2(a + b + 1)}
+        \intertext{Differentating the beta distribution and give it equal zero:}
+        \frac{\partial Beta(\mu|a,b)}{\partial \mu} = \frac{\Gamma(a + b)}{\Gamma(a)\Gamma(b)}((a - 1)\mu^{a - 2}(1 - \mu)^{b - 1} - (b - 1)\mu^{a - 1}(1 - \mu)^{b - 2}) = 0 \\
+        \frac{\Gamma(a + b)}{\Gamma(a)\Gamma(b)}(\mu^{a - 2}(1 - \mu)^{b - 2}((1 - \mu)(a - 1) - (b - 1)\mu)) = 0 \\
+        (1 - \mu)(a - 1) - (b - 1)\mu = 0 \\
+        \mu = \frac{a - 1}{a + b - 2}
+        \intertext{So the mode of the beta distribution is $\mu = \frac{a - 1}{a + b - 2}$ when $a > 1$ and $b > 1$.}
+    \end{align*}
+    \subsection*{Problem 2.35}
+    \begin{align*}
+        \intertext{The proof of 2.62 is in book so we don't prove it. Consequently, we will prove the equation (2.124)}
+        E[\Sigma_{ML}] = E[\frac{1}{N}\sum_{N = 1}^{N}(x - \mu_{ML})^{T}(x - \mu_{ML})] \\
+        = \frac{1}{N}E[\sum_{n = 1}^{N}(x_nx_m^T - 2x_n\mu_{ML} + \mu_{ML}^T\mu_{ML})] \\
+        = \frac{1}{N}\sum_{n = 1}^{N}E[x_nx_n^T] - \frac{2}{N}\sum_{n = 1}^{N}E[x_n\mu_{ML}] + \frac{1}{N}\sum_{n = 1}^{N}E[\mu_{ML}^{T}\mu_{ML}] \\
+        \intertext{For the first term:}
+        \frac{1}{N}\sum_{n = 1}^{N}E[x_nx_n^T] = \frac{1}{N}(N(\mu\mu^T + \Sigma)) = \mu\mu^T + \Sigma
+        \intertext{For the second term:}
+        - \frac{2}{N}\sum_{n = 1}^{N}E[x_n\mu_{ML}] = -\frac{2}{N}\sum_{n = 1}^{N}E[x_n(\frac{1}{N}\sum_{m = 1}^{M}x_m)] \\
+        = -\frac{2}{N^2}\sum_{n = 1}^{N}\sum_{m = 1}^{M}E[x_nx_m] \\
+        = -\frac{2}{N^2}\sum_{n = 1}^{N}\sum_{m = 1}^{M}(\mu\mu^T + I_{nm}\Sigma) \\
+        = -\frac{2}{N^2}N^2(\mu\mu^T + \frac{1}{N}\Sigma) = -2(\mu\mu^T + \frac{1}{N}\Sigma)
+        \intertext{For the third term:}
+        \frac{1}{N}\sum_{n = 1}^{N}E[\mu_{ML}\mu_{ML}^T] = \frac{1}{N}E[\sum_{n = 1}^{N}\sum_{m = 1}^{M}x_nx_m] \\
+        = \frac{1}{N^2}N^2(\mu\mu^T + \frac{1}{N}\Sigma)
+        \intertext{Combine all above results, we obtain:}
+        E[\Sigma_{ML}] = \mu\mu^T + \Sigma - 2(\mu\mu^T + \frac{1}{N}\Sigma) + \mu\mu^T + \frac{1}{N}\Sigma \\
+        = \Sigma - \frac{1}{N}\Sigma = \frac{N - 1}{N}\Sigma
+    \end{align*}
+    \subsection*{Problem 2.41}
+    \begin{align*}
+        \int_{0}^{\infty}Gamma(\lambda|a,b) = 1
+        \int_{0}^{\infty}Gamma(\lambda|a,b) = \int_{0}^{\infty}\frac{1}{\Gamma(a)}b^a\lambda^{a - 1}e^{-b\lambda}d\lambda \\
+        = \frac{b^a}{\Gamma(a)}\int_{0}^{\infty}\lambda^{a - 1}e^{-b\lambda}d\lambda \\
+        \intertext{Subtituting $u = b\lambda$, we obtain:}
+        = \frac{b^a}{\Gamma(a)}\int_{0}^{\infty}\frac{1}{b}(\frac{u}{b})^{a - 1}e^{u}du \\
+        = \frac{b^a}{\Gamma(a)}\int_{0}^{\infty}(\frac{1}{b})^au^{a - 1}e^{u}du \\
+        = \frac{1}{\Gamma(a)}\Gamma(a) = 1 && \text{Solved}
+    \end{align*}
+    \subsection*{Problem 2.42}
+    \begin{align*}
+        \intertext{I will get result from problem (2.41):}
+        E[\lambda] = \int_{0}^{\infty}Gamma(\lambda|a,b)\lambda d\lambda \\
+        = \frac{b^a}{\Gamma(a)}\int_{0}^{\infty}\int_0^{\infty}\lambda^ae^{-b\lambda} d\lambda \\
+        = \frac{b^a}{\Gamma(a)}\frac{1}{b^{a + 1}}\Gamma(a + 1)
+        \intertext{We have proved $\Gamma(x + 1) = x\Gamma(a)$. Hence:}
+        E[\lambda] = b^a\frac{1}{b^{a + 1}}\frac{1}{\Gamma(a)}a\Gamma(a) = \frac{a}{b} & \text{(Solved)} \\
+        var[\lambda] = E[\lambda^2] - E[\lambda]^2 \\
+        = \int_{0}^{\infty}Gamma(\lambda|a,b)\lambda^2 d\lambda - (\frac{a}{b})^2 \\
+        = \frac{b^a}{\Gamma(a)}\frac{1}{b^{a + 2}}\Gamma(a + 1) - \frac{a^2}{b^2} \\
+        = \frac{a(a + 1)}{b^2} - \frac{a^2}{b^2} = \frac{a}{b^2} & \text{(Solved)} \\
+        mode[\lambda] = \frac{\partial}{\partial \lambda}\frac{1}{\Gamma(a)}b^a\lambda^{a - 1}e^{-b\lambda} \\
+        = \frac{1}{\Gamma(a)}b^a((a - 1)\lambda^{a - 2}e^{-b\lambda} - b\lambda^{a - 1}e^{-b\lambda}) \\
+        = \frac{1}{\Gamma(a)}b^a\lambda^{a - 2}e^{-b\lambda}((a - 1) - b\lambda)
+        \intertext{Give it equal zero so we obtain:}
+        mode[\lambda] = \frac{a - 1}{b}
+        \intertext{When $b \neq 0$}
+    \end{align*}
+    \section*{Linear Models for Regression}
+    \subsection*{Problem 3.1}
+    \begin{align*}
+        \intertext{We have formula of tanh(a):}
+        tanh(a) = \frac{e^a - e^{-a}}{e^a + e^{-a}} = \frac{e^a(1 - e^{-2a})}{e^a(1 + e^{-2a})} \\
+        = \frac{(1 - e^{-2a})}{(1 + e^{-2a})} = \frac{- 1 - e^{-2a} + 2}{1 + e^{-2a}} \\
+        = - 1 + 2\sigma(-2a)
+        \intertext{Linear combination of logistic sigmoid function:}
+        y(x,w) = w_0 + \sum_{j = 1}^{M}w_j\sigma(\frac{x - \mu_j}{s}) \\
+        = w_0 + \sum_{j = 1}^{M}w_j(\frac{tanh(\frac{x - \mu_j}{s}) + 1}{2}) \\
+        = w_0 + \frac{1}{2}\sum_{j = 1}^{M}w_j + \sum_{j = 1}^{M}\frac{w_j}{2}tanh(\frac{x - \mu_j}{s})
+        \intertext{So the linear combination of sigmoid function will be equivalent to a linear combination of tanh function when:}
+        \mu_0 = w_0 + \frac{1}{2}\sum_{j = 1}^{M}w_j && \mu_j = \frac{w_j}{2}
+    \end{align*}
+\end{document}
