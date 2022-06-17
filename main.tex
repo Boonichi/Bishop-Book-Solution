@@ -334,6 +334,32 @@
         \mu = \frac{a - 1}{a + b - 2}
         \intertext{So the mode of the beta distribution is $\mu = \frac{a - 1}{a + b - 2}$ when $a > 1$ and $b > 1$.}
     \end{align*}
+    \subsection*{Problem 2.8}
+    Proof of equation (2.270):
+    \begin{align*}
+        E_y[E_x[x|y]] & = E_y[\int{xp(x|y)dx}] \\
+        & = \int\int xp(y)p(x|y)dxdy \\
+        & = \int\int xp(x,y)dxdy \\
+        & = \int xp(x)dx = E[x] && \text{(Solved)}
+    \end{align*}
+    Proof of equation (2.271):
+    \begin{align*}
+        var_x[x] & = E_x[x^2] - E_x[x]^2 \\
+    \end{align*}
+    Separating the above equation into two terms. The First Term:
+    \begin{align*}
+        E_x[x^2] & = E_y[E_x[x^2|y]] \\
+        & = E_y[var_x[x|y] + E_x[x|y]^2] \\
+        & = E_y[var_x[x|y]] + E_y[E_x[x|y]^2]\\
+        & = E_y[var_x[x|y]] + var_y[E_x[x|y]] + E_y[E_x[x|y]]^2\\
+    \end{align*}
+    The Second Term:
+    \begin{align*}
+        E_x[x]^2 & = E_y[E_x[x|y]]^2 & \text{(Based on equation 2.270)}
+        \intertext{Combining two terms, we will obtain:}
+        var[x] & = E_y[var_x[x|y]] + var_y[E_x[x|y]] + E_y[E_x[x|y]]^2 - E_y[E_x[x|y]]^2 \\
+        & = E_y[var_x[x|y]] + var_y[E_x[x|y]] && \text{(Solved)}
+    \end{align*}       
     \subsection*{Problem 2.35}
     \begin{align*}
         \intertext{The proof of 2.62 is in book so we don't prove it. Consequently, we will prove the equation (2.124)}
