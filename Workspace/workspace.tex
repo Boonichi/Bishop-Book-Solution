@@ -7,5 +7,30 @@
 \setlength{\oddsidemargin}{-.25in}
 \setlength{\textheight}{9.5in}
 \begin{document}
-    
+    \subsection*{Problem 2.10}
+    Based on Dirichlet Distribution given by 2.38, we have:
+    \begin{align*}
+        E[\mu_j] & = \int{Dir(\mu|\alpha)\mu_j}d\mu \\
+        & = \int{\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}\prod_{k = 1}^{K}\mu_{k}^{\alpha_{k-1}}\mu_jdu} \\
+        & = \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}\int{\prod_{k = 1}^{K}\mu_{k}^{\alpha_{k-1}}\mu_jdu} \\
+        & = \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)} \frac{\Gamma(\alpha_1)\cdots\Gamma(\alpha_j + 1)\cdots\Gamma(\alpha_K)}{\Gamma(\alpha_0 + 1)} \\
+        & = \frac{\Gamma(\alpha_0)\Gamma{\alpha_j + 1}}{\Gamma(\alpha_0 + 1)\Gamma(\alpha_j)}
+    \end{align*}
+    We also have $\Gamma(\alpha + 1) = \alpha\Gamma(\alpha)$. Hence:
+    \begin{align*}
+        E[\mu_j] = \frac{\alpha_j}{\alpha_0}
+    \end{align*}
+    We will solve as above with $E[\mu_j^2]$:
+    \begin{align*}
+        E[\mu_j^2] & = \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)} \frac{\Gamma(\alpha_1)\cdots\Gamma(\alpha_j + 2)\cdots\Gamma(\alpha_K)}{\Gamma(\alpha_0 + 2)} \\
+        & = \frac{\Gamma(\alpha_0)\Gamma(\alpha_j + 2)}{\Gamma(\alpha_0 + 2)\Gamma(\alpha_j)} \\
+        & = \frac{\alpha_j(\alpha_j + 1)}{\alpha_0(\alpha_0 + 1)} \\
+    \end{align*}
+    Bring the above result into equation $var[\mu_j]$:
+    \begin{align*}
+        var[\mu_j] & = E[\mu_j^2] - E[\mu_j]^2 \\
+        & = \frac{\alpha_j(\alpha_j + 1)}{\alpha_0(\alpha_0 + 1)} - \frac{\alpha_j}{\alpha_0}^2 \\
+        & = \frac{\alpha_j(\alpha_0 + 1)}{\alpha_0^2(\alpha_0 + 1)} \\
+    \end{align*}
+    In case of Covariance:
 \end{document}
