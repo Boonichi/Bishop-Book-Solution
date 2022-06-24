@@ -240,7 +240,7 @@
         = -u^{x}e^{-u}|_{0}^{\infty} + x\Gamma(x) \\
         \intertext{Through L'hopital rule, we obtain:}
         \lim_{u -> \infty}\frac{u^x}{e^{u}} = \lim_{u -> \infty}\frac{x!}{e^{\infty}} = 0 \\
-        \intertext{So we have proved $\gamma(x + 1) = x\gamma(x)$.}
+        \intertext{So we have proved $\Gamma(x + 1) = x\Gamma(x)$.}
         \Gamma(1) = \int_{0}^{\infty}e^{-u}du = e^{-u}|_{0}^{\infty} = (1 - 0) = 1 \\
         \intertext{Based on two above proved equation, we will obtain:}
         \Gamma(x + 1) = x\Gamma(x) = x!\Gamma(1) = x!
@@ -396,6 +396,36 @@
         & = \frac{\alpha_j\alpha_l}{\alpha_0(\alpha_0 + 1)} - \frac{\alpha_j\alpha_l}{\alpha_0^2} \\
         & = -\frac{\alpha_j\alpha_l}{\alpha_0^2(\alpha_0 + 1)}
     \end{align*} 
+    \subsection*{Problem 2.11}
+    Differentating the Dirichlet Distribution:
+    \begin{align*}
+        \frac{\partial Dir(\mu|\alpha)}{\partial \alpha_j} & = \partial(\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}\prod_{k = 1}^{K}\mu_{k}^{\alpha_k - 1})/\partial\alpha_j\\
+        & = \frac{\partial \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}}{\partial \alpha_j}\prod_{k = 1}^{K}\mu_{k}^{\alpha_k - 1} +
+        \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}\frac{\partial \prod_{k = 1}^{K}\mu_{k}^{\alpha_k - 1}}{\partial \alpha_j} \\
+    \end{align*}
+    We will handle with second term:
+    \begin{align*}
+        \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}\frac{\partial \prod_{k = 1}^{K}\mu_{k}^{\alpha_k - 1}}{\partial \alpha_j} = ln(\alpha_j) Dir(\mu|\alpha) \\
+    \end{align*}
+    With above result, we integrate both sides of equation and handle the left side firstly:
+    \begin{align*}
+        \int\frac{\partial Dir(\mu|\alpha)}{\partial \alpha_j} d\mu = \int\frac{\partial 1}{\partial \alpha_j} d\mu = 0
+    \end{align*}
+    The Right Side:
+    \begin{align*}
+        \int\frac{\partial \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}}{\partial \alpha_j}\prod_{k = 1}^{K}\mu_{k}^{\alpha_k - 1} d\mu+
+        \int ln(\alpha_j) Dir(\mu|\alpha) d\mu \\
+        = \frac{\partial \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}}{\partial \alpha_j}\frac{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}{\Gamma(\alpha_0)} + E[ln(\alpha_j)] \\
+        = \frac{\partial ln(\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)})}{\partial \alpha_j} + E[ln(\alpha_j)]
+    \end{align*}
+    Combining both sides, we obtain:
+    \begin{align*}
+        E[ln(\mu)] = -\frac{\partial ln(\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)})}{\partial \alpha_j} \\
+        = -\frac{\partial ln(\Gamma(\alpha_0)) - ln(\Gamma(\alpha_1)\cdots\Gamma(\alpha_K))}{\partial \alpha_j} \\
+        = \frac{\partial ln(\Gamma(\alpha_j))}{\partial \alpha_j} - \frac{\partial ln(\Gamma(\alpha_0))}{\partial \alpha_j} \\
+        = \frac{\partial ln(\Gamma(\alpha_j))}{\partial \alpha_j} - \frac{\partial ln(\Gamma(\alpha_0))}{\partial \alpha_0}\frac{\partial \alpha_0}{\partial \alpha_j}
+        = \psi(\alpha_j) - \psi(\alpha_0)
+    \end{align*}
     \subsection*{Problem 2.35}
     \begin{align*}
         \intertext{The proof of 2.62 is in book so we don't prove it. Consequently, we will prove the equation (2.124)}
