@@ -367,7 +367,7 @@
         & = \int{\frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}\prod_{k = 1}^{K}\mu_{k}^{\alpha_{k-1}}\mu_jdu} \\
         & = \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)}\int{\prod_{k = 1}^{K}\mu_{k}^{\alpha_{k-1}}\mu_jdu} \\
         & = \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)} \frac{\Gamma(\alpha_1)\cdots\Gamma(\alpha_j + 1)\cdots\Gamma(\alpha_K)}{\Gamma(\alpha_0 + 1)} \\
-        & = \frac{\Gamma(\alpha_0)\Gamma{\alpha_j + 1}}{\Gamma(\alpha_0 + 1)\Gamma(\alpha_j)}
+        & = \frac{\Gamma(\alpha_0)\Gamma(\alpha_j + 1)}{\Gamma(\alpha_0 + 1)\Gamma(\alpha_j)}
     \end{align*}
     We also have $\Gamma(\alpha + 1) = \alpha\Gamma(\alpha)$. Hence:
     \begin{align*}
@@ -385,7 +385,17 @@
         & = \frac{\alpha_j(\alpha_j + 1)}{\alpha_0(\alpha_0 + 1)} - \frac{\alpha_j}{\alpha_0}^2 \\
         & = \frac{\alpha_j(\alpha_0 + 1)}{\alpha_0^2(\alpha_0 + 1)} \\
     \end{align*}
-    In case of Covariance: 
+    In case of Covariance:
+    \begin{align*}
+        cov[\mu_j\mu_l] & = E[(\mu_j - E[\mu_j])(\mu_l - E[\mu_l])] \\
+        & = \int(\mu_j - E[\mu_j])(\mu_l - E[\mu_l])Dir(x|\mu) d\mu \\
+        & = \int(\mu_j\mu_l - E[\mu_l]\mu_j - E[\mu_j]\mu_l + E[\mu_j]E[\mu_l])Dir(x|mu) d\mu \\
+        & = \frac{\Gamma(\alpha_0)}{\Gamma(\alpha_1)\cdots\Gamma(\alpha_K)} \frac{\Gamma(\alpha_1)\cdots\Gamma(\alpha_j + 1)\Gamma(\alpha_l + 1)\cdots\Gamma(\alpha_K)}{\Gamma(\alpha_0 + 2)}
+            - E[\mu_l]E[\mu_j] - E[\mu_j]E[\mu_l] + E[\mu_j]E[\mu_l] \\
+        & = \frac{\alpha_j\alpha_l}{\alpha_0(\alpha_0 + 1)} - E[\mu_j]E[\mu_l] \\
+        & = \frac{\alpha_j\alpha_l}{\alpha_0(\alpha_0 + 1)} - \frac{\alpha_j\alpha_l}{\alpha_0^2} \\
+        & = -\frac{\alpha_j\alpha_l}{\alpha_0^2(\alpha_0 + 1)}
+    \end{align*} 
     \subsection*{Problem 2.35}
     \begin{align*}
         \intertext{The proof of 2.62 is in book so we don't prove it. Consequently, we will prove the equation (2.124)}
