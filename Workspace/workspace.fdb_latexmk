@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1656079374 "/Users/phanvanhung/Bishop-Book-Solution/Workspace/workspace.tex" "workspace.pdf" "workspace" 1656079374
-  "/Users/phanvanhung/Bishop-Book-Solution/Workspace/workspace.tex" 1656079374 2635 b9d216dda9e1c8d876e4389f4d5879a5 ""
+["pdflatex"] 1656157413 "/Users/phanvanhung/Bishop-Book-Solution/Workspace/workspace.tex" "workspace.pdf" "workspace" 1656157414
+  "/Users/phanvanhung/Bishop-Book-Solution/Workspace/workspace.tex" 1656157413 1644 d422d0d092a3aaeda08a7034c983dec8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -18,10 +18,8 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
-  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1248133631 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
-  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
@@ -38,8 +36,8 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1652844792 2826445 cf61d609661a7a62222cd5c1a9354ddd ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "workspace.aux" 1656079374 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "workspace.tex" 1656079374 2635 b9d216dda9e1c8d876e4389f4d5879a5 ""
+  "workspace.aux" 1656157414 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "workspace.tex" 1656157413 1644 d422d0d092a3aaeda08a7034c983dec8 ""
   (generated)
   "workspace.aux"
   "workspace.log"

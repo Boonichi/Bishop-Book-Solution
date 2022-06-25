@@ -426,6 +426,47 @@
         = \frac{\partial ln(\Gamma(\alpha_j))}{\partial \alpha_j} - \frac{\partial ln(\Gamma(\alpha_0))}{\partial \alpha_0}\frac{\partial \alpha_0}{\partial \alpha_j}
         = \psi(\alpha_j) - \psi(\alpha_0)
     \end{align*}
+    \subsection*{Problem 2.12}
+    Based on equation (2.278):
+    \begin{align*}
+        \int_{a}^{b}{U(x|a,b)} dx = \int_{a}^{b}{\frac{1}{b - a}} dx = \frac{b}{b - a} - \frac{a}{b - a} = 1
+    \end{align*}
+    Hence the Uniform Distribution is normalized. Next is mean of the distribution:
+    \begin{align*}
+        E[x] = \int_{a}^{b}{xU(x|a,b)} dx = \frac{1}{2(b - a)}x^2|_{a}^{b} = \frac{b^2}{2(b - a)} - \frac{a^2}{2(b - a)} = \frac{(a + b)}{2}
+    \end{align*}
+    In case of variance of the Uniform Distribution:
+    \begin{align*}
+        var[x] & = E[x^2] - E[x]^2 = \int_{a}^{b}{x^2U(x|a,b)} dx - (\frac{(a + b)}{2})^2 \\
+        & = \frac{b^3 - a^3}{3(b - a)} - \frac{(a + b)^2}{4} \\
+        & = \frac{a^2 + b^2 - 2ab}{12} = \frac{(a + b)^2}{12}
+    \end{align*}
+    \subsection*{Problem 2.13}
+    The Gaussian Distribution:
+    \begin{align*}
+        \mathcal{N}(x|\mu,\Sigma) = \frac{1}{(2\pi)^{D/2}}\frac{1}{(|\Sigma|)^{1/2}}\exp{(-\frac{1}{2}(x - \mu)^{T}\Sigma^{-1}(x - \mu))}
+    \end{align*}
+    KL Divergence:
+    \begin{align*}
+        KL(p(x)||q(x)) = \int p(x)ln \{\frac{p(x)}{q(x)}\} dx
+    \end{align*}
+    With two above equations, we obtain:
+    \begin{align*}
+        KL(p(x)||q(x)) & = \int p(x)\frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) - (x - \mu)^T\Sigma^{-1}(x - \mu) + (x - m)^TL^{-1}(x - m)) dx 
+    \end{align*}
+    We have property of expectation:
+    \begin{align*}
+        E[(x - \mu)^TA(x - \mu)] = Tr(A\Sigma) + (x - \mu)^TA(x - \mu) \\
+        E[x] = \int p(x)x dx \\
+        \int p(x) dx = 1
+    \end{align*}
+    Hence:
+    \begin{align*}
+        KL(p(x)||q(x)) & = \frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) + E[(x - \mu)^T\Sigma^{-1}(x - \mu)] - E[(x - m)^TL^{-1}(x - m)]) \\
+        & = \frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) + Tr(\Sigma^{-1}\Sigma) + (x - \mu)^T\Sigma^{-1}(x - \mu) - Tr(L^{-1}\Sigma) - (x - m)^TL^{-1}(x - m)) \\
+        & = \frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) + Tr(I_{D}) + (\mu - \mu)^T\Sigma^{-1}(\mu - \mu) - Tr(L^{-1}\Sigma) - (\mu - m)^TL^{-1}(\mu - m)) \\
+        & = \frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) + D - Tr(L^{-1}\Sigma) - (\mu - m)^TL^{-1}(\mu - m))
+    \end{align*}
     \subsection*{Problem 2.35}
     \begin{align*}
         \intertext{The proof of 2.62 is in book so we don't prove it. Consequently, we will prove the equation (2.124)}
