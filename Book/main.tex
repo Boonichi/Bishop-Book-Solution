@@ -467,6 +467,34 @@
         & = \frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) + Tr(I_{D}) + (\mu - \mu)^T\Sigma^{-1}(\mu - \mu) - Tr(L^{-1}\Sigma) - (\mu - m)^TL^{-1}(\mu - m)) \\
         & = \frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) + D - Tr(L^{-1}\Sigma) - (\mu - m)^TL^{-1}(\mu - m))
     \end{align*}
+    \subsection*{Problem 2.30}
+    Mean of z:
+    \begin{align*}
+        E[z] = R^{-1} \begin{pmatrix}
+            \Lambda\mu - A^TLb \\
+            Lb 
+        \end{pmatrix}
+    \end{align*}
+    Covariance of z:
+    \begin{align*}
+        cov[z] = R^{-1} = \begin{pmatrix}
+            \Lambda^{-1} & \Lambda^{-1}A^T \\
+            A\Lambda^{-1} & L^{-1} + A\Lambda^{-1}A^T
+        \end{pmatrix}
+    \end{align*}
+    Hence:
+    \begin{align*}
+        E[z] = \begin{pmatrix}
+            \Lambda^{-1} & \Lambda^{-1}A^T \\
+            A\Lambda^{-1} & L^{-1} + A\Lambda^{-1}A^T
+        \end{pmatrix} \begin{pmatrix}
+            \Lambda\mu - A^TLb \\
+            Lb 
+        \end{pmatrix} = \begin{pmatrix}
+            \mu \\
+            A\mu + b
+        \end{pmatrix}
+    \end{align*}
     \subsection*{Problem 2.35}
     \begin{align*}
         \intertext{The proof of 2.62 is in book so we don't prove it. Consequently, we will prove the equation (2.124)}
