@@ -245,6 +245,27 @@
         \intertext{Based on two above proved equation, we will obtain:}
         \Gamma(x + 1) = x\Gamma(x) = x!\Gamma(1) = x!
     \end{align*}
+    \subsection*{Problem 1.35}
+    The Differential Entropy of Gaussian Distribution:
+    \begin{align*}
+        H(x) & =  -\int p(x)lnp(x) dx \\
+        & = -\int p(x)ln\{\frac{1}{(2\pi\sigma^2)^{1/2}}\exp{-\frac{(x - \mu)^2}{2\sigma^2}}\} dx \\
+        & = -\int p(x)ln\{\frac{1}{(2\pi\sigma^2)^{1/2}}\} dx + \int p(x)(\frac{(x - \mu)^2}{2\sigma^2}) dx \\
+        & = \frac{1}{2}ln(2\pi\sigma^2) + \frac{1}{2} = \frac{1}{2}(1 + ln(2\pi\sigma^2))
+    \end{align*}
+    \subsection*{Problem 1.37}
+    We already have:
+    \begin{align*}
+        H[x] = -\int p(x)lnp(x) dx \\
+        H[y|x] = -\int\int p(x,y)lnp(y|x) dxdy \\
+    \end{align*}
+    It's straightforward by adding two above equations:
+    \begin{align*}
+        H[x] + H[y|x] & = - (\int p(x)lnp(x) dx + \int \int p(x,y)lnp(y|x) dxdy) \\
+        & = -(\int \int p(x,y)lnp(x) dxdy + \int \int p(x,y)lnp(y|x) dxdy) \\
+        & = -(\int \int p(x,y)ln(p(x)p(y|x)) dxdy) \\
+        & = -\int \int p(x,y)lnp(x,y) dxdy = H[x,y] && \text{(Solved)}
+    \end{align*}
     \section{Probability Distributions}
     \subsection*{Problem 2.1}
     \begin{align*}

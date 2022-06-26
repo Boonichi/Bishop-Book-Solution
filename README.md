@@ -14,5 +14,3 @@ There are some solution that created before and I took a look if I can't solve.
 (https://github.com/zhengqigao/PRML-Solution-Manual)
 
 (https://tommyodland.com/files/edu/bishop_solutions.pdf)
-
-## Test
