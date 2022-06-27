@@ -488,6 +488,8 @@
         & = \frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) + Tr(I_{D}) + (\mu - \mu)^T\Sigma^{-1}(\mu - \mu) - Tr(L^{-1}\Sigma) - (\mu - m)^TL^{-1}(\mu - m)) \\
         & = \frac{1}{2}(ln(\frac{|L|}{|\Sigma|}) + D - Tr(L^{-1}\Sigma) - (\mu - m)^TL^{-1}(\mu - m))
     \end{align*}
+    \subsection*{Problem 2.27}
+    This Problem is solved like problem 1.10.
     \subsection*{Problem 2.30}
     Mean of z:
     \begin{align*}
@@ -518,7 +520,7 @@
     \end{align*}
     \subsection*{Problem 2.35}
     \begin{align*}
-        \intertext{The proof of 2.62 is in book so we don't prove it. Consequently, we will prove the equation (2.124)}
+        \intertext{The proof of the equation (2.62) is in book so we don't prove it. Consequently, we will prove the equation (2.124)}
         E[\Sigma_{ML}] = E[\frac{1}{N}\sum_{N = 1}^{N}(x - \mu_{ML})^{T}(x - \mu_{ML})] \\
         = \frac{1}{N}E[\sum_{n = 1}^{N}(x_nx_m^T - 2x_n\mu_{ML} + \mu_{ML}^T\mu_{ML})] \\
         = \frac{1}{N}\sum_{n = 1}^{N}E[x_nx_n^T] - \frac{2}{N}\sum_{n = 1}^{N}E[x_n\mu_{ML}] + \frac{1}{N}\sum_{n = 1}^{N}E[\mu_{ML}^{T}\mu_{ML}] \\
@@ -578,5 +580,15 @@
         = w_0 + \frac{1}{2}\sum_{j = 1}^{M}w_j + \sum_{j = 1}^{M}\frac{w_j}{2}tanh(\frac{x - \mu_j}{s})
         \intertext{So the linear combination of sigmoid function will be equivalent to a linear combination of tanh function when:}
         \mu_0 = w_0 + \frac{1}{2}\sum_{j = 1}^{M}w_j && \mu_j = \frac{w_j}{2}
+    \end{align*}
+    \subsection*{Problem 3.3}
+    The solution of $w_{ML}$ is metioned in the equation (3.12) and (3.1) if we subtitute $\beta^{-1} = r_n\beta^{-1}$. The derivative of the equation (3.104) by w:
+    \begin{align*}
+        \frac{\partial}{\partial w} E_D(w) = \frac{\partial}{\partial w}\sum_{n = 1}^{N}r_n(t_n + w^T\phi(x_n)) \\
+        = \sum_{n = 1}^{N}r_n(t_n + w^T\phi(x_n))\phi(x_n)
+    \end{align*}
+    Set the derivative of the equation equal zero and based on the equation (3.16), we obtain:
+    \begin{align*}
+        w_ML = r_n(\Phi^T\Phi)^{-1}\Phi^Tt
     \end{align*}
 \end{document}
